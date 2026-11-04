@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+title: Źródła zdjęć
+description: Autorzy i licencje zdjęć użytych na stronie Drewitar.
+---
+<section class="page-head grid-bg"><div class="wrap"><h1>Źródła zdjęć</h1>
+  <p class="lead">Logo, filmy oraz zdjęcia realizacji pochodzą z profilu {{ company.name }} na Facebooku. Część zdjęć ilustracyjnych w ofercie pochodzi z Wikimedia Commons:</p>
+</div></section>
+<section class="section"><div class="wrap prose">
+  <ul class="credits">
+    {% for c in credits %}
+    <li><a href="{% if c.slug in ['doradztwo', 'wycena'] %}/uslugi/#{{ c.slug }}{% else %}/oferta/{{ c.slug }}/{% endif %}">{{ c.slug | replace("-", " ") }}</a> – „{{ c.title }}”, autor: {{ c.author or "nieznany" }}, licencja {{ c.license }}, <a href="{{ c.source }}" rel="noopener" target="_blank">źródło</a></li>
+    {% endfor %}
+  </ul>
+</div></section>

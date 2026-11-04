@@ -4,24 +4,27 @@
     "name": "Cięcie drewna trakiem",
     "description": "Przecieramy drewno na spalinowym traku Mebor – także z Twojego materiału.",
     "icon": "saw",
-    "image": "/assets/img/photos/klody.webp"
+    "image": "/assets/img/photos/ciecie-trakiem.webp"
   },
   {
     "slug": "doradztwo",
     "name": "Doradztwo",
     "description": "Pomożemy dobrać drewno i wymiary do Twojego projektu – dachu, altany czy elewacji.",
-    "icon": "talk"
+    "icon": "talk",
+    "image": "/assets/img/photos/doradztwo.webp"
   },
   {
     "slug": "wycena",
     "name": "Wycena",
     "description": "Szybka i bezpłatna wycena na podstawie projektu lub listy materiałów.",
-    "icon": "calc"
+    "icon": "calc",
+    "image": "/assets/img/photos/wycena.webp"
   },
   {
     "slug": "transport-hds",
     "name": "Transport z rozładunkiem HDS",
     "description": "Dowozimy drewno na budowę i rozładowujemy żurawiem HDS.",
-    "icon": "truck"
+    "icon": "truck",
+    "image": "/assets/img/photos/transport-hds.webp"
   }
 ]

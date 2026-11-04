@@ -11,7 +11,8 @@
       "Możliwość impregnacji"
     ],
     "category": "konstrukcja",
-    "code": "CNC"
+    "code": "CNC",
+    "image": "/assets/img/photos/wiezba-dachowa-cnc.webp"
   },
   {
     "slug": "wiazary-dachowe",
@@ -24,7 +25,8 @@
       "Mniej odpadów"
     ],
     "category": "konstrukcja",
-    "code": "W/T"
+    "code": "W/T",
+    "image": "/assets/img/photos/wiazary-dachowe.webp"
   },
   {
     "slug": "deski-elewacyjne",
@@ -51,7 +53,8 @@
       "Dobra cena przy większych ilościach"
     ],
     "category": "deski",
-    "code": "2.5"
+    "code": "2.5",
+    "image": "/assets/img/photos/deski-szalunkowe.webp"
   },
   {
     "slug": "deski-ryflowane",
@@ -63,7 +66,8 @@
       "Tarasy i pomosty"
     ],
     "category": "deski",
-    "code": "≋"
+    "code": "≋",
+    "image": "/assets/img/photos/deski-ryflowane.webp"
   },
   {
     "slug": "deski-podlogowe",
@@ -75,7 +79,8 @@
       "Pióro-wpust na życzenie"
     ],
     "category": "deski",
-    "code": "P/W"
+    "code": "P/W",
+    "image": "/assets/img/photos/deski-podlogowe.webp"
   },
   {
     "slug": "laty-i-kontrlaty",
@@ -87,7 +92,8 @@
       "Docinanie na długość"
     ],
     "category": "konstrukcja",
-    "code": "5×4"
+    "code": "5×4",
+    "image": "/assets/img/photos/laty-i-kontrlaty.webp"
   },
   {
     "slug": "belki-i-kantowki",
@@ -99,7 +105,8 @@
       "Długości do zamówienia"
     ],
     "category": "konstrukcja",
-    "code": "16×8"
+    "code": "16×8",
+    "image": "/assets/img/photos/belki-i-kantowki.webp"
   },
   {
     "slug": "tarcica",
@@ -124,6 +131,7 @@
       "Indywidualna wycena"
     ],
     "category": "tarcica",
-    "code": "+/-"
+    "code": "+/-",
+    "image": "/assets/img/photos/na-zamowienie.webp"
   }
 ]
