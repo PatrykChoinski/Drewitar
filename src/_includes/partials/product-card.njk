@@ -1,7 +1,12 @@
-<article class="card">
-  <img src="/assets/img/placeholders/{{ p.slug }}.svg" alt="{{ p.name }}" width="1200" height="800" loading="lazy">
+<article class="card reveal" data-category="{{ p.category }}" data-search="{{ (p.name + ' ' + p.short) | lower }}" style="--d:{{ (loop.index0 % 4) * 0.08 }}s">
+  <div class="card-art">
+    <img src="{{ p.image or ('/assets/img/placeholders/' + p.slug + '.svg') }}" alt="" width="1200" height="800" loading="lazy">
+    <span class="card-code" aria-hidden="true">{{ p.code }}</span>
+    <span class="card-tag">{{ p.category }}</span>
+  </div>
   <div class="card-body">
     <h3><a href="/oferta/{{ p.slug }}/">{{ p.name }}</a></h3>
     <p>{{ p.short }}</p>
+    <span class="card-more" aria-hidden="true">Szczegóły →</span>
   </div>
 </article>

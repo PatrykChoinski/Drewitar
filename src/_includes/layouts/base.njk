@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
   <meta property="og:description" content="{{ description or company.tagline }}">
   <meta property="og:url" content="{{ company.siteUrl }}{{ page.url }}">
   <meta property="og:image" content="{{ company.siteUrl }}/assets/img/placeholders/hero.svg">
-  <meta name="theme-color" content="#3b2414">
+  <meta name="theme-color" content="#15100b">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script type="application/ld+json">
@@ -37,6 +37,7 @@
     "geo": { "@type": "GeoCoordinates", "latitude": {{ company.geo.lat }}, "longitude": {{ company.geo.lng }} }
   }
   </script>
+  <script>document.documentElement.classList.remove("no-js")</script>
 </head>
 <body>
   <a class="skip" href="#main">Przejdź do treści</a>
@@ -46,7 +47,7 @@
   </main>
   {% include "partials/cta.njk" %}
   {% include "partials/footer.njk" %}
-  <a class="call-fab" href="tel:{{ company.phones[0].tel }}" aria-label="Zadzwoń {{ company.phones[0].display }}">📞 Zadzwoń</a>
+  <a class="call-fab" href="tel:{{ company.phones[0].tel }}" aria-label="Zadzwoń {{ company.phones[0].display }}"><span aria-hidden="true">☎</span> Zadzwoń</a>
   <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

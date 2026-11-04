@@ -2,50 +2,79 @@
 layout: layouts/base.njk
 description: Drewitar – tartak i skład drewna w Sobieniu (woj. łódzkie). Więźba dachowa CNC na projekt, wiązary, deski, belki, kantówki, tarcica. Transport z rozładunkiem HDS.
 ---
-<section class="hero" style="background-image: linear-gradient(90deg, rgba(43,26,14,.88), rgba(43,26,14,.45)), url('{{ '/assets/img/placeholders/hero.svg' | url }}')">
-  <div class="container hero-inner">
-    <p class="eyebrow">Tartak i skład drewna · Sobień, woj. łódzkie</p>
-    <h1>Drewno budowlane prosto z tartaku</h1>
-    <p class="lead">Więźba dachowa CNC na projekt, prefabrykowane wiązary, deski, belki i tarcica. Doradzimy, wycenimy i dowieziemy z rozładunkiem HDS.</p>
-    <div class="hero-actions">
-      <a class="btn" href="/kontakt/#wycena">Bezpłatna wycena</a>
-      <a class="btn btn-outline-light" href="tel:{{ company.phones[0].tel }}">{{ company.phones[0].display }}</a>
+<div class="grid-bg">
+<section class="wrap hero">
+  <div>
+    <p class="eyebrow reveal"><span class="dot"></span>Tartak · Sobień, woj. łódzkie</p>
+    <h1 class="reveal" style="--d:.08s">Drewno budowlane <em>prosto z tartaku.</em></h1>
+    <p class="intro reveal" style="--d:.16s">Więźba dachowa CNC na projekt, prefabrykowane wiązary, deski, belki i tarcica. Doradzimy, wycenimy i dowieziemy na budowę z rozładunkiem HDS.</p>
+    <div class="hero-actions reveal" style="--d:.24s">
+      <a class="btn" href="/kontakt/#wycena">Bezpłatna wycena <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="tel:{{ company.phones[0].tel }}">{{ company.phones[0].display }}</a>
     </div>
+    <div class="hero-stats reveal" style="--d:.32s">
+      <div class="stat"><strong data-count="{{ site.year - company.founded }}">{{ site.year - company.founded }}</strong><span>lat na rynku</span></div>
+      <div class="stat"><strong data-count="{{ products.length }}">{{ products.length }}</strong><span>grup produktów</span></div>
+      <div class="stat"><strong>CNC</strong><span>więźba na projekt</span></div>
+      <div class="stat"><strong>HDS</strong><span>dostawa z rozładunkiem</span></div>
+    </div>
+  </div>
+
+  <div class="flow grid-bg reveal" style="--d:.2s;--photo:url('{{ '/assets/img/photos/hero-sm.webp' | url }}')" aria-label="Jak pracujemy: od kłody do dostawy na budowę" role="img">
+    <div class="flow-bar top"><span>proces · drewitar</span><span class="live">● na żywo</span></div>
+    <svg viewBox="0 0 400 400" preserveAspectRatio="none" aria-hidden="true">
+      <path class="run" d="M90 90 C 200 90, 220 140, 310 140"/>
+      <path class="run" d="M310 150 C 220 160, 180 230, 110 240"/>
+      <path class="run" d="M110 250 C 200 260, 220 300, 300 300"/>
+    </svg>
+    <div class="node n1" data-step="0">01<strong>Kłoda</strong><small>las · surowiec</small></div>
+    <div class="node n2" data-step="1">02<strong>Trak Mebor</strong><small>przetarcie</small></div>
+    <div class="node n3" data-step="2">03<strong>Obróbka CNC</strong><small>więźba wg projektu</small></div>
+    <div class="node n4" data-step="3">04<strong>Dostawa HDS</strong><small>prosto na budowę</small></div>
+    <div class="flow-bar bottom"><span>sobień 72</span><span>od {{ company.founded }}</span></div>
+  </div>
+</section>
+</div>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    {% for round in [1, 2] %}{% for p in products %}<span>{{ p.name }}</span>{% endfor %}{% endfor %}
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="section-head">
+    <h2 class="reveal">Co robimy <em>najlepiej</em></h2>
+    <p class="reveal" style="--d:.1s">Pełen proces w jednym miejscu – od przetarcia drewna, przez obróbkę, po dostawę na plac budowy.</p>
+  </div>
+  <div class="features reveal">
+    {% for s in services %}
+    <div class="feature"><span class="feature-num">0{{ loop.index }}</span><h3>{{ s.name }}</h3><p>{{ s.description }}</p></div>
+    {% endfor %}
   </div>
 </section>
 
-<section class="section">
-  <div class="container features">
-    <div class="feature"><span class="feature-icon" aria-hidden="true">📐</span><h2>Więźba CNC na projekt</h2><p>Precyzyjnie docięte i oznaczone elementy – szybki montaż dachu.</p></div>
-    <div class="feature"><span class="feature-icon" aria-hidden="true">🚛</span><h2>Transport z HDS</h2><p>Dowozimy na budowę i rozładowujemy żurawiem.</p></div>
-    <div class="feature"><span class="feature-icon" aria-hidden="true">🪚</span><h2>Cięcie na wymiar</h2><p>Własny trak Mebor – nietypowe wymiary na zamówienie.</p></div>
+<section class="section wrap">
+  <div class="section-head">
+    <h2 class="reveal">Nasza <em>oferta</em></h2>
+    <a class="btn btn-ghost reveal" href="/oferta/">Cała oferta <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+  <div class="cards">
+    {% for p in products.slice(0, 6) %}{% include "partials/product-card.njk" %}{% endfor %}
   </div>
 </section>
 
-<section class="section section-alt">
-  <div class="container">
-    <h2 class="section-title">Nasza oferta</h2>
-    <div class="cards">
-      {% for p in products.slice(0, 6) %}
-      {% include "partials/product-card.njk" %}
-      {% endfor %}
-    </div>
-    <p class="center"><a class="btn btn-outline" href="/oferta/">Zobacz całą ofertę</a></p>
+<section class="section wrap split">
+  <div class="reveal">
+    <p class="eyebrow"><span class="dot"></span>Dla kogo</p>
+    <p class="large-copy">Od {{ company.founded }} roku zaopatrujemy <em>budowy domów, dekarzy i cieśli</em> oraz inwestorów prywatnych.</p>
+    <p class="muted">Budujesz dom, altanę albo robisz elewację? Doradzimy i dobierzemy drewno do projektu.</p>
+    <ul class="checks">
+      <li>Bezpłatna wycena z projektu</li>
+      <li>Drewno suche i mokre</li>
+      <li>Elementy na indywidualne zamówienie</li>
+    </ul>
+    <a class="btn btn-ghost" href="/o-firmie/">Poznaj nas <span class="arrow" aria-hidden="true">→</span></a>
   </div>
-</section>
-
-<section class="section">
-  <div class="container split">
-    <div>
-      <h2 class="section-title">Dla klientów indywidualnych i firm</h2>
-      <p>Od {{ company.founded }} roku zaopatrujemy budowy domów, dekarzy, cieśli i inwestorów prywatnych. Niezależnie od tego, czy budujesz dom, altanę czy robisz elewację – doradzimy i dobierzemy drewno do projektu.</p>
-      <ul class="checks">
-        <li>Bezpłatna wycena z projektu</li>
-        <li>Drewno suche i mokre</li>
-        <li>Elementy na indywidualne zamówienie</li>
-      </ul>
-      <a class="btn" href="/o-firmie/">Poznaj nas</a>
-    </div>
-    <img src="/assets/img/placeholders/o-firmie.svg" alt="Tartak Drewitar" width="1200" height="800" loading="lazy">
-  </div>
+  <div class="media reveal" style="--d:.15s"><img src="/assets/img/photos/deski-elewacyjne-2.webp" alt="Deski elewacyjne z tartaku Drewitar" width="1200" height="800" loading="lazy"></div>
 </section>

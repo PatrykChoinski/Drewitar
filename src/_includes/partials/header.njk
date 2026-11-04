@@ -7,10 +7,10 @@
   { url: "/kontakt/", label: "Kontakt" }
 ] %}
 <header class="site-header">
-  <div class="container header-inner">
+  <div class="wrap header-inner">
     <a class="logo" href="/">
-      <img src="/assets/img/favicon.svg" alt="" width="36" height="36">
-      <span><strong>Drewitar</strong><small>tartak · skład drewna</small></span>
+      <img class="logo-img" src="/assets/img/logo.webp" alt="Drewitar Kamil Kocemba" width="480" height="230">
+      <span class="logo-sub">tartak<br>skład drewna</span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
       <span class="sr-only">Menu</span><span class="burger" aria-hidden="true"></span>
@@ -20,7 +20,7 @@
         {% for item in nav %}
         <li><a href="{{ item.url }}"{% if page.url == item.url or (item.url != "/" and page.url.startsWith(item.url)) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
         {% endfor %}
-        <li><a class="btn btn-small" href="/kontakt/#wycena">Wycena</a></li>
+        <li><a class="btn btn-small" href="/kontakt/#wycena">Bezpłatna wycena</a></li>
       </ul>
     </nav>
   </div>

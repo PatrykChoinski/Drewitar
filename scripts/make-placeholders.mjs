@@ -53,8 +53,8 @@ function woodSvg(key, label, w = 1200, h = 800) {
 
 const read = (f) => JSON.parse(readFileSync(join(root, 'src/_data', f), 'utf8'));
 const items = [
-  ...read('products.json').map((p) => [p.slug, p.name]),
-  ...read('services.json').map((s) => [s.slug, s.name]),
+  ...read('products.json').map((p) => [p.slug, '']),
+  ...read('services.json').map((s) => [s.slug, '']),
   ['hero', ''],
   ['o-firmie', 'Tartak Drewitar'],
   ...Array.from({ length: 6 }, (_, i) => [`galeria-${i + 1}`, `Realizacja ${i + 1}`]),

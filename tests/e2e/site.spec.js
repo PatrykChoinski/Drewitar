@@ -40,3 +40,14 @@ test('lightbox w galerii', async ({ page }) => {
   await page.getByRole('button', { name: 'Zamknij' }).click();
   await expect(page.locator('dialog.lightbox')).toBeHidden();
 });
+
+test('filtry i wyszukiwarka oferty', async ({ page }) => {
+  await page.goto('/oferta/');
+  await page.getByRole('button', { name: 'Deski' }).click();
+  await expect(page.locator('[data-cards] .card:visible')).toHaveCount(4);
+  await page.getByRole('button', { name: 'Wszystko' }).click();
+  await page.getByPlaceholder('Szukaj').fill('łaty');
+  await expect(page.locator('[data-cards] .card:visible')).toHaveCount(1);
+  await page.getByPlaceholder('Szukaj').fill('xyz');
+  await expect(page.locator('[data-empty]')).toBeVisible();
+});

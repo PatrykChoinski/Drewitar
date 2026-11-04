@@ -26,15 +26,17 @@ npm run dev          # http://localhost:8080
 
 ## Zdjęcia
 
-Obecnie są **placeholdery**. Aby podmienić: wrzuć zdjęcie (najlepiej `.webp`, 1200×800) i zmień ścieżkę w szablonie
-lub nadpisz plik o tej samej nazwie. Zdjęcia z Facebooka firmy – tylko za zgodą właściciela.
+- `src/assets/img/logo.webp` i `src/assets/img/photos/*.webp` – z publicznego profilu firmy na Facebooku (do potwierdzenia zgody właściciela).
+- Nowe zdjęcia: wrzuć oryginały do katalogu, dopisz je w `scripts/optimize-images.mjs`, uruchom `node scripts/optimize-images.mjs <katalog>`.
+- Produkt/usługa bez pola `image` w JSON dostaje placeholder z `src/assets/img/placeholders/`.
+- Galeria: `src/_data/gallery.json`.
 
 ## Do uzupełnienia
 
 - [ ] `formspreeId` w `company.json` (konto na formspree.io → formularz → ID)
 - [ ] `email` w `company.json` (teraz przykładowy `kontakt@drewitar.com`)
 - [ ] `geo` w `company.json` – dokładne współrzędne
-- [ ] logo, prawdziwe zdjęcia i filmy
+- [ ] zdjęcia pozostałych produktów (więźba, wiązary, łaty, belki…) i filmy
 - [ ] domena drewitar.com: plik `CNAME` (dodać passthrough w `eleventy.config.js`), `siteUrl` w `company.json`, usunąć `PATH_PREFIX` z `deploy.yml`
 
 ## Deploy

@@ -4,27 +4,29 @@ title: Kontakt i wycena
 description: Kontakt z tartakiem Drewitar – Sobień 72, 26-307 Białaczów. Telefon +48 731 741 821. Bezpłatna wycena drewna.
 hideCta: true
 ---
-<section class="page-head"><div class="container"><h1>Kontakt i wycena</h1></div></section>
-<section class="section"><div class="container split">
-  <div>
-    <h2>Dane kontaktowe</h2>
+<section class="page-head grid-bg"><div class="wrap">
+  <p class="eyebrow reveal"><span class="dot"></span>Odpowiadamy szybko</p>
+  <h1 class="reveal">Kontakt <em>i wycena</em></h1>
+</div></section>
+<section class="section wrap contact-grid">
+  <div class="reveal">
     <address class="contact-box">
-      <strong>{{ company.name }}</strong><br>
-      {{ company.street }}, {{ company.postalCode }} {{ company.city }}<br>
-      woj. {{ company.region }}<br>
-      {% for p in company.phones %}Tel.: <a href="tel:{{ p.tel }}">{{ p.display }}</a><br>{% endfor %}
-      NIP: {{ company.nip }}<br>
-      <a href="{{ company.facebook }}" rel="noopener" target="_blank">Facebook</a>
+      <span class="label">Telefon</span>
+      {% for p in company.phones %}<a class="big" href="tel:{{ p.tel }}">{{ p.display }}</a>{% endfor %}
+      <span class="label">Adres</span>
+      <span>{{ company.name }}<br>{{ company.street }}, {{ company.postalCode }} {{ company.city }}<br>woj. {{ company.region }}</span>
+      <span class="label">Dane</span>
+      <span>NIP: {{ company.nip }} · <a href="{{ company.facebook }}" rel="noopener" target="_blank">Facebook</a></span>
     </address>
     <iframe class="map" title="Mapa dojazdu do tartaku Drewitar" loading="lazy" src="https://www.google.com/maps?q=Sobie%C5%84+72,+26-307+Bia%C5%82acz%C3%B3w&amp;output=embed"></iframe>
   </div>
-  <div>
-    <h2 id="wycena">Zapytaj o wycenę</h2>
+  <div class="reveal" style="--d:.12s">
+    <h2 id="wycena" class="eyebrow"><span class="dot"></span>Zapytaj o wycenę</h2>
     <form class="quote-form" action="https://formspree.io/f/{{ company.formspreeId }}" method="POST">
       <label>Imię i nazwisko / firma <input type="text" name="name" required autocomplete="name"></label>
       <label>Telefon <input name="phone" type="tel" required autocomplete="tel" pattern="[0-9 +()\-]{9,}"></label>
       <label>E-mail <input name="email" type="email" autocomplete="email"></label>
-      <label>Co planujesz zbudować?
+      <label>Co budujesz?
         <select name="project" required>
           <option value="">— wybierz —</option>
           <option>Dach / więźba</option><option>Altana / wiata</option><option>Elewacja</option><option>Taras</option><option>Budowa domu</option><option>Inne</option>
@@ -32,12 +34,14 @@ hideCta: true
       </label>
       <label>Produkt <input type="text" name="product" id="product-field" placeholder="np. więźba dachowa CNC"></label>
       <label>Ilość (m³ / szt.) <input type="text" name="quantity"></label>
-      <label>Miejscowość dostawy <input type="text" name="delivery"></label>
-      <label>Wiadomość <textarea name="message" rows="5" placeholder="Wymiary, termin, link do projektu…"></textarea></label>
+      <label class="full">Miejscowość dostawy <input type="text" name="delivery"></label>
+      <label class="full">Wiadomość <textarea name="message" rows="5" placeholder="Wymiary, termin, link do projektu…"></textarea></label>
       <div class="hp" aria-hidden="true"><label>Nie wypełniaj <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
-      <label class="consent"><input type="checkbox" name="consent" required> Wyrażam zgodę na przetwarzanie danych w celu przygotowania wyceny (<a href="/polityka-prywatnosci/">polityka prywatności</a>).</label>
-      <button class="btn" type="submit">Wyślij zapytanie</button>
-      <p class="hint">Wolisz zadzwonić? <a href="tel:{{ company.phones[0].tel }}">{{ company.phones[0].display }}</a></p>
+      <label class="consent full"><input type="checkbox" name="consent" required> Wyrażam zgodę na przetwarzanie danych w celu przygotowania wyceny (<a href="/polityka-prywatnosci/">polityka prywatności</a>).</label>
+      <div class="full hero-actions">
+        <button class="btn" type="submit">Wyślij zapytanie <span class="arrow" aria-hidden="true">→</span></button>
+        <p class="hint">lub zadzwoń: <a href="tel:{{ company.phones[0].tel }}">{{ company.phones[0].display }}</a></p>
+      </div>
     </form>
   </div>
-</div></section>
+</section>

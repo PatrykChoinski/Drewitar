@@ -23,7 +23,7 @@ describe('build', () => {
   it('każda strona ma title, description i lang=pl', () => {
     for (const p of pages.filter((x) => x.endsWith('.html'))) {
       const html = read(p);
-      expect(html, p).toMatch(/<html lang="pl">/);
+      expect(html, p).toMatch(/<html lang="pl"[ >]/);
       expect(html, p).toMatch(/<title>[^<]{5,}<\/title>/);
       expect(html, p).toMatch(/<meta name="description" content="[^"]{20,}">/);
     }

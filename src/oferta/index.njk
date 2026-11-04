@@ -3,7 +3,23 @@ layout: layouts/base.njk
 title: Oferta
 description: Więźba dachowa CNC, wiązary prefabrykowane, deski elewacyjne, szalunkowe, ryflowane i podłogowe, łaty, kontrłaty, belki, kantówki, tarcica sucha i mokra.
 ---
-<section class="page-head"><div class="container"><h1>Oferta</h1><p class="lead">Drewno konstrukcyjne i wykończeniowe prosto z tartaku – standardowe wymiary i elementy na zamówienie.</p></div></section>
-<section class="section"><div class="container cards">
-  {% for p in products %}{% include "partials/product-card.njk" %}{% endfor %}
+<section class="page-head grid-bg"><div class="wrap">
+  <p class="eyebrow reveal"><span class="dot"></span>{{ products.length }} grup produktów</p>
+  <h1 class="reveal">Oferta <em>tartaku</em></h1>
+  <p class="lead reveal">Drewno konstrukcyjne i wykończeniowe prosto z tartaku – standardowe wymiary i elementy na zamówienie.</p>
 </div></section>
+<section class="section wrap">
+  <div class="toolbar">
+    <div class="filters" role="group" aria-label="Filtruj ofertę">
+      <button type="button" data-filter="all" aria-pressed="true">Wszystko</button>
+      <button type="button" data-filter="konstrukcja" aria-pressed="false">Konstrukcja dachu</button>
+      <button type="button" data-filter="deski" aria-pressed="false">Deski</button>
+      <button type="button" data-filter="tarcica" aria-pressed="false">Tarcica i na zamówienie</button>
+    </div>
+    <label class="search"><span class="sr-only">Szukaj w ofercie</span><input type="search" placeholder="Szukaj, np. łaty…" data-search-input></label>
+  </div>
+  <div class="cards" data-cards>
+    {% for p in products %}{% include "partials/product-card.njk" %}{% endfor %}
+  </div>
+  <p class="empty" data-empty hidden>Nic nie znaleziono – <a href="/kontakt/#wycena">zapytaj nas</a>, wykonamy na zamówienie.</p>
+</section>

@@ -41,3 +41,14 @@ for (const file of ['products.json', 'services.json']) {
     });
   });
 }
+
+describe('zdjęcia', () => {
+  it('pliki z products/services/gallery istnieją', () => {
+    const paths = [
+      ...load('products.json').map((p) => p.image),
+      ...load('services.json').map((s) => s.image),
+      ...load('gallery.json').flatMap((g) => [g.src, g.thumb]),
+    ].filter(Boolean);
+    for (const p of paths) expect(existsSync(`src${p}`), p).toBe(true);
+  });
+});

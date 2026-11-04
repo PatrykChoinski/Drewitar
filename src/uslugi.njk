@@ -3,12 +3,21 @@ layout: layouts/base.njk
 title: Usługi
 description: Cięcie drewna trakiem spalinowym Mebor, doradztwo, bezpłatna wycena oraz transport z rozładunkiem HDS.
 ---
-<section class="page-head"><div class="container"><h1>Usługi</h1><p class="lead">Od przetarcia kłody po dostawę na budowę.</p></div></section>
-<section class="section"><div class="container cards">
-  {% for s in services %}
-  <article class="card" id="{{ s.slug }}">
-    <img src="/assets/img/placeholders/{{ s.slug }}.svg" alt="{{ s.name }}" width="1200" height="800" loading="lazy">
-    <div class="card-body"><h2>{{ s.name }}</h2><p>{{ s.description }}</p></div>
-  </article>
-  {% endfor %}
+<section class="page-head grid-bg"><div class="wrap">
+  <p class="eyebrow reveal"><span class="dot"></span>Usługi</p>
+  <h1 class="reveal">Od kłody <em>po dostawę</em></h1>
+  <p class="lead reveal">Przecieramy, doradzamy, wyceniamy i dowozimy – wszystko w jednym miejscu.</p>
 </div></section>
+<section class="section wrap">
+  <div class="cards">
+    {% for s in services %}
+    <article class="card reveal" id="{{ s.slug }}" style="--d:{{ loop.index0 * 0.08 }}s">
+      <div class="card-art">
+        <img src="{{ s.image or ('/assets/img/placeholders/' + s.slug + '.svg') }}" alt="" width="1200" height="800" loading="lazy">
+        <span class="card-code" aria-hidden="true">0{{ loop.index }}</span>
+      </div>
+      <div class="card-body"><h2>{{ s.name }}</h2><p>{{ s.description }}</p></div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
