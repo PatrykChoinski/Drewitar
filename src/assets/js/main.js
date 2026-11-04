@@ -94,3 +94,31 @@ if (productField) {
   const slug = new URLSearchParams(location.search).get('produkt');
   if (slug) productField.value = slug.replace(/-/g, ' ');
 }
+
+// Filmy: autoodtwarzanie bez dźwięku w polu widzenia, przycisk dźwięku
+const vids = $$('video[data-autoplay]');
+if (vids.length) {
+  const vio = 'IntersectionObserver' in window && !reduced
+    ? new IntersectionObserver((entries) => entries.forEach((e) => {
+        if (e.isIntersecting) e.target.play().catch(() => {});
+        else e.target.pause();
+      }), { threshold: 0.5 })
+    : null;
+  const setIcon = (btn, on) => {
+    btn.firstElementChild.textContent = on ? '🔊' : '🔇';
+    btn.setAttribute('aria-label', (on ? 'Wycisz: ' : 'Włącz dźwięk: ') + btn.parentElement.querySelector('video').title);
+  };
+  vids.forEach((v) => {
+    if (vio) vio.observe(v);
+    v.addEventListener('click', () => (v.paused ? v.play() : v.pause()));
+  });
+  $$('[data-sound]').forEach((b) => b.addEventListener('click', () => {
+    const v = b.parentElement.querySelector('video');
+    const turnOn = v.muted;
+    vids.forEach((other) => { other.muted = true; });
+    $$('[data-sound]').forEach((other) => setIcon(other, false));
+    v.muted = !turnOn;
+    setIcon(b, turnOn);
+    if (turnOn) { v.currentTime = 0; v.play().catch(() => {}); }
+  }));
+}

@@ -4,6 +4,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
   eleventyConfig.addFilter('json', (v) => JSON.stringify(v));
+  eleventyConfig.addFilter('plDate', (d) => new Date(d).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }));
   eleventyConfig.addFilter('isoDate', (d) => new Date(d).toISOString().slice(0, 10));
 }
 

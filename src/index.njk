@@ -54,6 +54,8 @@ description: Drewitar – tartak i skład drewna w Sobieniu (woj. łódzkie). Wi
   </div>
 </section>
 
+{% include "partials/videos.njk" %}
+
 <section class="section wrap">
   <div class="section-head">
     <h2 class="reveal">Nasza <em>oferta</em></h2>
@@ -63,6 +65,8 @@ description: Drewitar – tartak i skład drewna w Sobieniu (woj. łódzkie). Wi
     {% for p in products.slice(0, 6) %}{% include "partials/product-card.njk" %}{% endfor %}
   </div>
 </section>
+
+{% include "partials/fb-posts.njk" %}
 
 <section class="section wrap split">
   <div class="reveal">

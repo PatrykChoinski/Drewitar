@@ -6,6 +6,9 @@ on:
     types: [completed]
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # codzienna przebudowa – świeże posty z Facebooka
+    - cron: '0 5 * * *'
 
 permissions:
   contents: read
@@ -19,7 +22,7 @@ concurrency:
 jobs:
   build:
     # deploy tylko gdy CI przeszło
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,6 +37,8 @@ jobs:
         run: npm run build
         env:
           PATH_PREFIX: /${{ github.event.repository.name }}/
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          FB_PAGE_ID: ${{ vars.FB_PAGE_ID }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

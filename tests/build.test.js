@@ -45,6 +45,12 @@ describe('build', () => {
     for (const p of products) expect(sm).toContain(`/oferta/${p.slug}/`);
   });
 
+  it('strona główna ma filmy i sekcję aktualności z FB', () => {
+    const html = read('index.html');
+    expect(html).toContain('/assets/video/hds.mp4');
+    expect(html).toMatch(/facebook\.com\/plugins\/page\.php|Czytaj na Facebooku/);
+  });
+
   it('formularz ma honeypot i zgodę RODO', () => {
     const html = read('kontakt/index.html');
     expect(html).toContain('name="_gotcha"');

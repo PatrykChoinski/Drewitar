@@ -1,0 +1,22 @@
+<section class="section wrap" id="w-akcji">
+  <div class="section-head">
+    <h2 class="reveal">Zobacz nas <em>w akcji</em></h2>
+    <p class="reveal" style="--d:.1s">Krótkie filmy prosto z tartaku i placu budowy. Kliknij, żeby obejrzeć z dźwiękiem.</p>
+  </div>
+  <div class="videos">
+    {% for v in videos %}
+    <figure class="video-card reveal" style="--d:{{ loop.index0 * 0.08 }}s">
+      <video muted loop playsinline preload="none" poster="/assets/video/{{ v.slug }}.webp" data-autoplay title="{{ v.title }}">
+        <source src="/assets/video/{{ v.slug }}.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="video-sound" data-sound aria-label="Włącz dźwięk: {{ v.title }}"><span aria-hidden="true">🔇</span></button>
+      <figcaption>
+        <span class="card-tag">{{ v.tag }}</span>
+        <strong>{{ v.title }}</strong>
+        <span>{{ v.text }}</span>
+        <a href="{{ v.link }}">Więcej →</a>
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>

@@ -247,3 +247,24 @@ dialog[open] { animation: pop .25s ease-out; }
 .flow > * { z-index: 1; }
 @media (max-width: 560px) { .hero-stats { grid-template-columns: repeat(2, auto); } }
 .gallery-item.wide { grid-column: span 2; } .gallery-item.wide img { aspect-ratio: auto; height: 100%; } @media (max-width: 700px) { .gallery-item.wide { grid-column: auto; } .gallery-item.wide img { aspect-ratio: 2 / 1; } }
+
+/* filmy */
+.videos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 1000px) { .videos { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .videos { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 78%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; } .video-card { scroll-snap-align: start; } }
+.video-card { position: relative; margin: 0; aspect-ratio: 9 / 16; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--surface); transition: transform .3s, border-color .3s; }
+.video-card:hover { transform: translateY(-6px); border-color: #7a5428; }
+.video-card video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
+.video-card figcaption { position: absolute; inset: auto 0 0; padding: 60px 16px 16px; background: linear-gradient(transparent, #15100bf2 55%); display: grid; gap: 4px; pointer-events: none; }
+.video-card figcaption .card-tag { position: static; justify-self: start; margin-bottom: 6px; }
+.video-card figcaption strong { font-size: 1.05rem; line-height: 1.2; }
+.video-card figcaption span:not(.card-tag) { color: var(--muted); font-size: 13px; line-height: 1.4; }
+.video-card figcaption a { pointer-events: auto; font: 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--amber); text-decoration: none; margin-top: 6px; }
+.video-sound { position: absolute; top: 12px; left: 12px; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line-2); background: #15100bcc; backdrop-filter: blur(6px); cursor: pointer; font-size: 16px; }
+
+/* posty z Facebooka */
+.fb-embed { display: grid; grid-template-columns: minmax(0, 500px) 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+.fb-embed iframe { width: 100%; max-width: 500px; height: 720px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+@media (max-width: 900px) { .fb-embed { grid-template-columns: 1fr; } .fb-side { order: -1; } .fb-embed iframe { height: 620px; } }
+.post .card-body { gap: 10px; }
+.post time { margin: 0; }

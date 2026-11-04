@@ -31,6 +31,14 @@ npm run dev          # http://localhost:8080
 - Produkt/usługa bez pola `image` w JSON dostaje placeholder z `src/assets/img/placeholders/`.
 - Galeria: `src/_data/gallery.json`.
 
+## Filmy i posty z Facebooka
+
+- **Filmy** (`src/_data/videos.json`, pliki w `src/assets/video/`): HDS, cięcie trakiem, wiązary, deska elewacyjna – z profilu FB, skompresowane do 720p (`ffmpeg-static`).
+- **Aktualności** (`src/_includes/partials/fb-posts.njk`):
+  - bez tokenu → oficjalna wtyczka Facebooka (Page Plugin), zawsze aktualna,
+  - z tokenem → 3 najnowsze posty jako własne karty, pobierane przy buildzie (`src/_data/fbPosts.js`); deploy przebudowuje stronę codziennie o 5:00 UTC.
+- Token: w Meta for Developers utwórz aplikację, wygeneruj **Page Access Token** (uprawnienia `pages_read_engagement`, `pages_show_list`) dla strony Drewitar i zapisz go w repo jako sekret **`FB_PAGE_TOKEN`** (*Settings → Secrets and variables → Actions*). Opcjonalnie zmienna `FB_PAGE_ID`.
+
 ## Do uzupełnienia
 
 - [ ] `formspreeId` w `company.json` (konto na formspree.io → formularz → ID)

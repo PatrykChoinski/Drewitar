@@ -52,3 +52,22 @@ describe('zdjęcia', () => {
     for (const p of paths) expect(existsSync(`src${p}`), p).toBe(true);
   });
 });
+
+describe('filmy', () => {
+  it('każdy film ma mp4 i plakat', () => {
+    for (const v of load('videos.json')) {
+      expect(existsSync(`src/assets/video/${v.slug}.mp4`), v.slug).toBe(true);
+      expect(existsSync(`src/assets/video/${v.slug}.webp`), v.slug).toBe(true);
+    }
+  });
+});
+
+describe('posty z Facebooka', () => {
+  it('bez tokenu zwraca null (strona pokazuje wtyczkę FB)', async () => {
+    const saved = process.env.FB_PAGE_TOKEN;
+    delete process.env.FB_PAGE_TOKEN;
+    const { default: fbPosts } = await import('../src/_data/fbPosts.js');
+    expect(await fbPosts()).toBeNull();
+    if (saved) process.env.FB_PAGE_TOKEN = saved;
+  });
+});

@@ -1,0 +1,31 @@
+<section class="section wrap" id="aktualnosci">
+  <div class="section-head">
+    <h2 class="reveal">Aktualności <em>z Facebooka</em></h2>
+    <a class="btn btn-ghost reveal" href="{{ company.facebook }}" rel="noopener" target="_blank">Obserwuj nas <span class="arrow" aria-hidden="true">→</span></a>
+  </div>
+  {% if fbPosts and fbPosts.length %}
+  <div class="cards posts">
+    {% for post in fbPosts %}
+    <article class="card post reveal" style="--d:{{ loop.index0 * 0.08 }}s">
+      {% if post.image %}<div class="card-art"><img src="{{ post.image }}" alt="" loading="lazy" width="1200" height="750">{% if post.video %}<span class="card-tag">▶ film</span>{% endif %}</div>{% endif %}
+      <div class="card-body">
+        <time class="card-more" datetime="{{ post.date }}">{{ post.date | plDate }}</time>
+        <p>{{ post.text | truncate(220) }}</p>
+        <h3><a href="{{ post.url }}" rel="noopener" target="_blank">Czytaj na Facebooku →</a></h3>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="fb-embed reveal">
+    <iframe title="Najnowsze posty Drewitar na Facebooku" loading="lazy"
+      src="https://www.facebook.com/plugins/page.php?href={{ company.facebook | urlencode }}&amp;tabs=timeline&amp;width=500&amp;height=720&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=false&amp;locale=pl_PL"
+      width="500" height="720" allow="encrypted-media"></iframe>
+    <div class="fb-side">
+      <p class="eyebrow"><span class="dot"></span>Na bieżąco</p>
+      <p class="large-copy">Nowe realizacje, dostawy i promocje wrzucamy <em>najpierw na Facebooka.</em></p>
+      <p class="muted">Obok widzisz nasze najnowsze posty – przewiń, żeby zobaczyć więcej.</p>
+    </div>
+  </div>
+  {% endif %}
+</section>
