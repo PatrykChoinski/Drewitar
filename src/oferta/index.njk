@@ -1,0 +1,9 @@
+---
+layout: layouts/base.njk
+title: Oferta
+description: Więźba dachowa CNC, wiązary prefabrykowane, deski elewacyjne, szalunkowe, ryflowane i podłogowe, łaty, kontrłaty, belki, kantówki, tarcica sucha i mokra.
+---
+<section class="page-head"><div class="container"><h1>Oferta</h1><p class="lead">Drewno konstrukcyjne i wykończeniowe prosto z tartaku – standardowe wymiary i elementy na zamówienie.</p></div></section>
+<section class="section"><div class="container cards">
+  {% for p in products %}{% include "partials/product-card.njk" %}{% endfor %}
+</div></section>

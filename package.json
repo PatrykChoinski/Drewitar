@@ -1,0 +1,28 @@
+{
+  "name": "drewitar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Strona tartaku Drewitar Kamil Kocemba",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "placeholders": "node scripts/make-placeholders.mjs",
+    "test": "npm run test:unit && npm run test:html && npm run test:links",
+    "test:unit": "vitest run",
+    "test:html": "html-validate \"_site/**/*.html\"",
+    "test:links": "linkinator _site --recurse --skip \"patrykchoinski.github.io|google|facebook|formspree|schema.org|sitemaps.org\"",
+    "test:e2e": "playwright test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "@playwright/test": "^1.64.1",
+    "html-validate": "^11.18.0",
+    "linkinator": "^8.1.0",
+    "vitest": "^5.1.0",
+    "zod": "^4.6.7"
+  }
+}

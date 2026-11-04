@@ -1,0 +1,14 @@
+{% if not hideCta %}
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>Planujesz dach, altanę lub elewację?</h2>
+      <p>Zadzwoń lub wyślij projekt – przygotujemy bezpłatną wycenę i dowieziemy drewno z rozładunkiem HDS.</p>
+    </div>
+    <div class="cta-actions">
+      {% for p in company.phones %}<a class="btn" href="tel:{{ p.tel }}">{{ p.display }}</a>{% endfor %}
+      <a class="btn btn-outline" href="/kontakt/#wycena">Zapytaj o wycenę</a>
+    </div>
+  </div>
+</section>
+{% endif %}

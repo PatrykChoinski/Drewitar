@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+title: Galeria
+description: Realizacje tartaku Drewitar – więźby dachowe, wiązary, elewacje i transport drewna.
+---
+<section class="page-head"><div class="container"><h1>Galeria realizacji</h1><p class="lead">Więcej zdjęć i filmów na naszym <a href="{{ company.facebook }}" rel="noopener" target="_blank">profilu na Facebooku</a>.</p></div></section>
+<section class="section"><div class="container gallery">
+  {% for i in range(1, 7) %}
+  <a class="gallery-item" href="/assets/img/placeholders/galeria-{{ i }}.svg" data-lightbox>
+    <img src="/assets/img/placeholders/galeria-{{ i }}.svg" alt="Realizacja {{ i }}" width="1200" height="800" loading="lazy">
+  </a>
+  {% endfor %}
+</div></section>
+<dialog class="lightbox" aria-label="Podgląd zdjęcia"><button type="button" class="lightbox-close" aria-label="Zamknij">×</button><img src="data:," alt=""></dialog>

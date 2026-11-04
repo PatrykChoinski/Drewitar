@@ -1,0 +1,27 @@
+{% set nav = [
+  { url: "/", label: "Start" },
+  { url: "/oferta/", label: "Oferta" },
+  { url: "/uslugi/", label: "Usługi" },
+  { url: "/galeria/", label: "Galeria" },
+  { url: "/o-firmie/", label: "O firmie" },
+  { url: "/kontakt/", label: "Kontakt" }
+] %}
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="/">
+      <img src="/assets/img/favicon.svg" alt="" width="36" height="36">
+      <span><strong>Drewitar</strong><small>tartak · skład drewna</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span class="sr-only">Menu</span><span class="burger" aria-hidden="true"></span>
+    </button>
+    <nav id="main-nav" class="main-nav" aria-label="Główna nawigacja">
+      <ul>
+        {% for item in nav %}
+        <li><a href="{{ item.url }}"{% if page.url == item.url or (item.url != "/" and page.url.startsWith(item.url)) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endfor %}
+        <li><a class="btn btn-small" href="/kontakt/#wycena">Wycena</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

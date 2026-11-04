@@ -1,0 +1,29 @@
+{
+  "name": "Drewitar Kamil Kocemba",
+  "shortName": "Drewitar",
+  "tagline": "Tartak i skład drewna w Sobieniu",
+  "founded": 2020,
+  "street": "Sobień 72",
+  "postalCode": "26-307",
+  "city": "Białaczów",
+  "region": "łódzkie",
+  "phones": [
+    {
+      "display": "+48 731 741 821",
+      "tel": "+48731741821"
+    },
+    {
+      "display": "+48 721 107 950",
+      "tel": "+48721107950"
+    }
+  ],
+  "email": "kontakt@drewitar.com",
+  "nip": "7681811529",
+  "facebook": "https://www.facebook.com/p/Drewitar-Kamil-Kocemba-100064727059559/",
+  "geo": {
+    "lat": 51.3,
+    "lng": 20.25
+  },
+  "formspreeId": "REPLACE_ME",
+  "siteUrl": "https://patrykchoinski.github.io/Drewitar"
+}

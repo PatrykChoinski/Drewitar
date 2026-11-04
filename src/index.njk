@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+description: Drewitar – tartak i skład drewna w Sobieniu (woj. łódzkie). Więźba dachowa CNC na projekt, wiązary, deski, belki, kantówki, tarcica. Transport z rozładunkiem HDS.
+---
+<section class="hero" style="background-image: linear-gradient(90deg, rgba(43,26,14,.88), rgba(43,26,14,.45)), url('{{ '/assets/img/placeholders/hero.svg' | url }}')">
+  <div class="container hero-inner">
+    <p class="eyebrow">Tartak i skład drewna · Sobień, woj. łódzkie</p>
+    <h1>Drewno budowlane prosto z tartaku</h1>
+    <p class="lead">Więźba dachowa CNC na projekt, prefabrykowane wiązary, deski, belki i tarcica. Doradzimy, wycenimy i dowieziemy z rozładunkiem HDS.</p>
+    <div class="hero-actions">
+      <a class="btn" href="/kontakt/#wycena">Bezpłatna wycena</a>
+      <a class="btn btn-outline-light" href="tel:{{ company.phones[0].tel }}">{{ company.phones[0].display }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container features">
+    <div class="feature"><span class="feature-icon" aria-hidden="true">📐</span><h2>Więźba CNC na projekt</h2><p>Precyzyjnie docięte i oznaczone elementy – szybki montaż dachu.</p></div>
+    <div class="feature"><span class="feature-icon" aria-hidden="true">🚛</span><h2>Transport z HDS</h2><p>Dowozimy na budowę i rozładowujemy żurawiem.</p></div>
+    <div class="feature"><span class="feature-icon" aria-hidden="true">🪚</span><h2>Cięcie na wymiar</h2><p>Własny trak Mebor – nietypowe wymiary na zamówienie.</p></div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Nasza oferta</h2>
+    <div class="cards">
+      {% for p in products.slice(0, 6) %}
+      {% include "partials/product-card.njk" %}
+      {% endfor %}
+    </div>
+    <p class="center"><a class="btn btn-outline" href="/oferta/">Zobacz całą ofertę</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      <h2 class="section-title">Dla klientów indywidualnych i firm</h2>
+      <p>Od {{ company.founded }} roku zaopatrujemy budowy domów, dekarzy, cieśli i inwestorów prywatnych. Niezależnie od tego, czy budujesz dom, altanę czy robisz elewację – doradzimy i dobierzemy drewno do projektu.</p>
+      <ul class="checks">
+        <li>Bezpłatna wycena z projektu</li>
+        <li>Drewno suche i mokre</li>
+        <li>Elementy na indywidualne zamówienie</li>
+      </ul>
+      <a class="btn" href="/o-firmie/">Poznaj nas</a>
+    </div>
+    <img src="/assets/img/placeholders/o-firmie.svg" alt="Tartak Drewitar" width="1200" height="800" loading="lazy">
+  </div>
+</section>

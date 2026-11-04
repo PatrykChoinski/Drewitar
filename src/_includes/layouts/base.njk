@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} | {% endif %}{{ company.shortName }} – tartak i skład drewna Sobień</title>
+  <meta name="description" content="{{ description or 'Drewitar – tartak i skład drewna w Sobieniu (gm. Białaczów, woj. łódzkie). Więźba dachowa CNC, wiązary, deski, belki, tarcica. Transport z HDS.' }}">
+  <link rel="canonical" href="{{ company.siteUrl }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:title" content="{{ title or company.name }}">
+  <meta property="og:description" content="{{ description or company.tagline }}">
+  <meta property="og:url" content="{{ company.siteUrl }}{{ page.url }}">
+  <meta property="og:image" content="{{ company.siteUrl }}/assets/img/placeholders/hero.svg">
+  <meta name="theme-color" content="#3b2414">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": {{ company.name | json | safe }},
+    "description": {{ company.tagline | json | safe }},
+    "foundingDate": "{{ company.founded }}",
+    "telephone": [{% for p in company.phones %}"{{ p.tel }}"{% if not loop.last %}, {% endif %}{% endfor %}],
+    "vatID": "{{ company.nip }}",
+    "url": "{{ company.siteUrl }}/",
+    "sameAs": ["{{ company.facebook }}"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": {{ company.street | json | safe }},
+      "postalCode": "{{ company.postalCode }}",
+      "addressLocality": {{ company.city | json | safe }},
+      "addressRegion": {{ company.region | json | safe }},
+      "addressCountry": "PL"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": {{ company.geo.lat }}, "longitude": {{ company.geo.lng }} }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Przejdź do treści</a>
+  {% include "partials/header.njk" %}
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  {% include "partials/cta.njk" %}
+  {% include "partials/footer.njk" %}
+  <a class="call-fab" href="tel:{{ company.phones[0].tel }}" aria-label="Zadzwoń {{ company.phones[0].display }}">📞 Zadzwoń</a>
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for p in collections.all %}{% if not p.url.startsWith("/oferta/") or p.url == "/oferta/" %}
+  <url><loc>{{ company.siteUrl }}{{ p.url }}</loc></url>
+{%- endif %}{% endfor %}
+{%- for p in products %}
+  <url><loc>{{ company.siteUrl }}/oferta/{{ p.slug }}/</loc></url>
+{%- endfor %}
+</urlset>

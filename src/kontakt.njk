@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+title: Kontakt i wycena
+description: Kontakt z tartakiem Drewitar – Sobień 72, 26-307 Białaczów. Telefon +48 731 741 821. Bezpłatna wycena drewna.
+hideCta: true
+---
+<section class="page-head"><div class="container"><h1>Kontakt i wycena</h1></div></section>
+<section class="section"><div class="container split">
+  <div>
+    <h2>Dane kontaktowe</h2>
+    <address class="contact-box">
+      <strong>{{ company.name }}</strong><br>
+      {{ company.street }}, {{ company.postalCode }} {{ company.city }}<br>
+      woj. {{ company.region }}<br>
+      {% for p in company.phones %}Tel.: <a href="tel:{{ p.tel }}">{{ p.display }}</a><br>{% endfor %}
+      NIP: {{ company.nip }}<br>
+      <a href="{{ company.facebook }}" rel="noopener" target="_blank">Facebook</a>
+    </address>
+    <iframe class="map" title="Mapa dojazdu do tartaku Drewitar" loading="lazy" src="https://www.google.com/maps?q=Sobie%C5%84+72,+26-307+Bia%C5%82acz%C3%B3w&amp;output=embed"></iframe>
+  </div>
+  <div>
+    <h2 id="wycena">Zapytaj o wycenę</h2>
+    <form class="quote-form" action="https://formspree.io/f/{{ company.formspreeId }}" method="POST">
+      <label>Imię i nazwisko / firma <input type="text" name="name" required autocomplete="name"></label>
+      <label>Telefon <input name="phone" type="tel" required autocomplete="tel" pattern="[0-9 +()\-]{9,}"></label>
+      <label>E-mail <input name="email" type="email" autocomplete="email"></label>
+      <label>Co planujesz zbudować?
+        <select name="project" required>
+          <option value="">— wybierz —</option>
+          <option>Dach / więźba</option><option>Altana / wiata</option><option>Elewacja</option><option>Taras</option><option>Budowa domu</option><option>Inne</option>
+        </select>
+      </label>
+      <label>Produkt <input type="text" name="product" id="product-field" placeholder="np. więźba dachowa CNC"></label>
+      <label>Ilość (m³ / szt.) <input type="text" name="quantity"></label>
+      <label>Miejscowość dostawy <input type="text" name="delivery"></label>
+      <label>Wiadomość <textarea name="message" rows="5" placeholder="Wymiary, termin, link do projektu…"></textarea></label>
+      <div class="hp" aria-hidden="true"><label>Nie wypełniaj <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+      <label class="consent"><input type="checkbox" name="consent" required> Wyrażam zgodę na przetwarzanie danych w celu przygotowania wyceny (<a href="/polityka-prywatnosci/">polityka prywatności</a>).</label>
+      <button class="btn" type="submit">Wyślij zapytanie</button>
+      <p class="hint">Wolisz zadzwonić? <a href="tel:{{ company.phones[0].tel }}">{{ company.phones[0].display }}</a></p>
+    </form>
+  </div>
+</div></section>

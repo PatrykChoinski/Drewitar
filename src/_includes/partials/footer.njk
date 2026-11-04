@@ -1,0 +1,26 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h2>{{ company.name }}</h2>
+      <p>{{ company.tagline }}. Działamy od {{ company.founded }} roku.</p>
+    </div>
+    <div>
+      <h2>Kontakt</h2>
+      <address>
+      {{ company.street }}<br>{{ company.postalCode }} {{ company.city }} (woj. {{ company.region }})<br>
+      {% for p in company.phones %}<a href="tel:{{ p.tel }}">{{ p.display }}</a><br>{% endfor %}
+      NIP: {{ company.nip }}
+      </address>
+    </div>
+    <div>
+      <h2>Na skróty</h2>
+      <ul>
+        <li><a href="/oferta/">Oferta</a></li>
+        <li><a href="/kontakt/#wycena">Wycena</a></li>
+        <li><a href="{{ company.facebook }}" rel="noopener" target="_blank">Facebook</a></li>
+        <li><a href="/polityka-prywatnosci/">Polityka prywatności</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="container copy">© {{ site.year }} {{ company.name }}</p>
+</footer>

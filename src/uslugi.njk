@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+title: Usługi
+description: Cięcie drewna trakiem spalinowym Mebor, doradztwo, bezpłatna wycena oraz transport z rozładunkiem HDS.
+---
+<section class="page-head"><div class="container"><h1>Usługi</h1><p class="lead">Od przetarcia kłody po dostawę na budowę.</p></div></section>
+<section class="section"><div class="container cards">
+  {% for s in services %}
+  <article class="card" id="{{ s.slug }}">
+    <img src="/assets/img/placeholders/{{ s.slug }}.svg" alt="{{ s.name }}" width="1200" height="800" loading="lazy">
+    <div class="card-body"><h2>{{ s.name }}</h2><p>{{ s.description }}</p></div>
+  </article>
+  {% endfor %}
+</div></section>

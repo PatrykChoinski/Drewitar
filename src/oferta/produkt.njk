@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: products
+  size: 1
+  alias: product
+permalink: "/oferta/{{ product.slug }}/"
+eleventyComputed:
+  title: "{{ product.name }}"
+  description: "{{ product.short }} Drewitar – tartak Sobień, woj. łódzkie."
+---
+<section class="page-head"><div class="container">
+  <nav class="crumbs" aria-label="Okruszki"><a href="/">Start</a> › <a href="/oferta/">Oferta</a> › {{ product.name }}</nav>
+  <h1>{{ product.name }}</h1>
+</div></section>
+<section class="section"><div class="container split">
+  <img src="/assets/img/placeholders/{{ product.slug }}.svg" alt="{{ product.name }}" width="1200" height="800">
+  <div>
+    <p class="lead">{{ product.description }}</p>
+    <ul class="checks">{% for f in product.features %}<li>{{ f }}</li>{% endfor %}</ul>
+    <a class="btn" href="/kontakt/?produkt={{ product.slug }}#wycena">Zapytaj o wycenę</a>
+  </div>
+</div></section>
