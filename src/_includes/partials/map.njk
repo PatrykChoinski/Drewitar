@@ -1,0 +1,17 @@
+<section class="section wrap" id="dojazd">
+  <div class="section-head">
+    <h2 class="reveal">Jak do nas <em>dojechać</em></h2>
+    <p class="reveal" style="--d:.1s">{{ company.street }}, {{ company.postalCode }} {{ company.city }} (woj. {{ company.region }}). Zapraszamy na plac – najlepiej po wcześniejszym telefonie.</p>
+  </div>
+  <div class="map-wrap reveal">
+    <iframe class="map map-big" title="Mapa Google – tartak Drewitar, {{ company.street }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=Drewitar+Kamil+Kocemba,+Sobie%C5%84+72,+26-307+Bia%C5%82acz%C3%B3w&amp;z=14&amp;output=embed"></iframe>
+    <div class="map-card">
+      <p class="eyebrow"><span class="dot"></span>Tartak Drewitar</p>
+      <strong>{{ company.street }}</strong>
+      <span>{{ company.postalCode }} {{ company.city }}</span>
+      <a class="btn btn-small" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sobie%C5%84+72,+26-307+Bia%C5%82acz%C3%B3w" rel="noopener" target="_blank">Wyznacz trasę <span class="arrow" aria-hidden="true">→</span></a>
+      <a href="tel:{{ company.phones[0].tel }}">{{ company.phones[0].display }}</a>
+    </div>
+  </div>
+</section>

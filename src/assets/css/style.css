@@ -280,3 +280,12 @@ dialog[open] { animation: pop .25s ease-out; }
 .site-footer { border-top: 4px solid #00932a; }
 .card { box-shadow: 0 2px 10px #0d0f0d0d; }
 .logo-img { border: 1px solid var(--line); }
+
+/* mapa dojazdu */
+.map-wrap { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+.map-big { display: block; height: clamp(360px, 50vw, 520px); border: 0; border-radius: 0; }
+.map-card { position: absolute; left: 20px; bottom: 20px; display: grid; gap: 6px; justify-items: start; padding: 20px 22px; background: #fffffff2; backdrop-filter: blur(8px); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 14px 40px #0d0f0d26; max-width: calc(100% - 40px); }
+.map-card .eyebrow { margin: 0 0 4px; }
+.map-card strong { font-size: 1.3rem; }
+.map-card span { color: var(--muted); margin-bottom: 8px; }
+@media (max-width: 600px) { .map-card { position: static; max-width: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; box-shadow: none; } }
