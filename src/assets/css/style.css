@@ -289,3 +289,12 @@ dialog[open] { animation: pop .25s ease-out; }
 .map-card strong { font-size: 1.3rem; }
 .map-card span { color: var(--muted); margin-bottom: 8px; }
 @media (max-width: 600px) { .map-card { position: static; max-width: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; box-shadow: none; } }
+
+/* widget FB: na ekranach dotykowych nakładka – przewija się strona, stuknięcie otwiera Facebooka */
+.fb-frame { position: relative; max-width: 500px; }
+.fb-shield { display: none; }
+@media (hover: none), (max-width: 900px) {
+  .fb-embed iframe { height: 520px; pointer-events: none; }
+  .fb-shield { display: flex; align-items: flex-end; justify-content: center; position: absolute; inset: 0; border-radius: var(--radius); text-decoration: none; background: linear-gradient(transparent 65%, #ffffffee); padding-bottom: 18px; }
+  .fb-shield span { background: var(--green); color: var(--green-ink); font-weight: 700; padding: 11px 18px; border-radius: 8px; box-shadow: 0 8px 20px #0d0f0d26; }
+}

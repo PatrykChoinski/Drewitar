@@ -51,3 +51,12 @@ test('filtry i wyszukiwarka oferty', async ({ page }) => {
   await page.getByPlaceholder('Szukaj').fill('xyz');
   await expect(page.locator('[data-empty]')).toBeVisible();
 });
+
+test('widget FB nie przechwytuje przewijania na telefonie', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'tylko mobile');
+  await page.goto('/#aktualnosci');
+  const iframe = page.locator('.fb-embed iframe');
+  test.skip(await iframe.count() === 0, 'tryb z tokenem – brak widgetu');
+  expect(await iframe.evaluate((el) => getComputedStyle(el).pointerEvents)).toBe('none');
+  await expect(page.locator('.fb-shield')).toBeVisible();
+});
