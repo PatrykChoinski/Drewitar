@@ -42,12 +42,22 @@ npm run dev          # http://localhost:8080
 ## Do uzupełnienia
 
 - [ ] `formspreeId` w `company.json` (konto na formspree.io → formularz → ID)
-- [ ] `email` w `company.json` (teraz przykładowy `kontakt@drewitar.com`)
+- [ ] `email` w `company.json` (teraz `kontakt@drewitar.pl` – potwierdzić, że skrzynka istnieje)
 - [ ] `geo` w `company.json` – dokładne współrzędne
 - [ ] zdjęcia pozostałych produktów (więźba, wiązary, łaty, belki…) i filmy
-- [ ] domena drewitar.com: plik `CNAME` (dodać passthrough w `eleventy.config.js`), `siteUrl` w `company.json`, usunąć `PATH_PREFIX` z `deploy.yml`
+- [ ] sekrety HOSTIDO_FTP_* (deploy na drewitar.pl)
 
-## Deploy
+## Deploy – drewitar.pl (Hostido)
 
-Push na `main` → workflow **CI** (testy) → po sukcesie **Deploy na GitHub Pages**.
-Jednorazowo: *Settings → Pages → Source: GitHub Actions*.
+Domena **drewitar.pl** ma DNS w Hostido (`ns1–3.hostido.net.pl`) i rekord A na serwer hostingu – **DNS nie trzeba zmieniać**, strona trafia na ten hosting przez FTPS.
+
+Push na `main` → **CI** (testy) → **Deploy na drewitar.pl**: build, wgranie `_site/` przez FTPS, sprawdzenie strony na żywo. Dodatkowo codziennie o 5:00 UTC (świeże posty z FB).
+
+Jednorazowo:
+1. Panel Hostido → **Konta FTP** → nowe konto z katalogiem **`/domains/drewitar.pl/public_html`** (konto widzi tylko ten katalog – skrypt odmówi pracy na koncie z dostępem do całego hostingu).
+2. GitHub → *Settings → Secrets and variables → Actions* → sekrety:
+   - `HOSTIDO_FTP_HOST` – nazwa serwera z panelu Hostido (np. `host123456.hostido.net.pl`),
+   - `HOSTIDO_FTP_USERNAME`, `HOSTIDO_FTP_PASSWORD` – dane konta z punktu 1.
+3. *Actions → Deploy na drewitar.pl → Run workflow*.
+
+Bez sekretów workflow pomija wgrywanie (ostrzeżenie zamiast błędu). Poczta (`mail.drewitar.pl`, MX) nie jest ruszana.
