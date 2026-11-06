@@ -3,7 +3,7 @@ import { EleventyHtmlBasePlugin } from '@11ty/eleventy';
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
-  eleventyConfig.addPassthroughCopy({ 'src/static/.htaccess': '.htaccess' });
+  eleventyConfig.addPassthroughCopy({ 'src/static/.htaccess': '.htaccess', 'src/static/CNAME': 'CNAME' });
   eleventyConfig.addFilter('json', (v) => JSON.stringify(v));
   eleventyConfig.addFilter('plDate', (d) => new Date(d).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' }));
   eleventyConfig.addFilter('isoDate', (d) => new Date(d).toISOString().slice(0, 10));

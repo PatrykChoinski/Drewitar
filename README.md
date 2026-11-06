@@ -45,19 +45,27 @@ npm run dev          # http://localhost:8080
 - [ ] `email` w `company.json` (teraz `kontakt@drewitar.pl` – potwierdzić, że skrzynka istnieje)
 - [ ] `geo` w `company.json` – dokładne współrzędne
 - [ ] zdjęcia pozostałych produktów (więźba, wiązary, łaty, belki…) i filmy
-- [ ] sekrety HOSTIDO_FTP_* (deploy na drewitar.pl)
+- [ ] rekordy DNS drewitar.pl → GitHub Pages (tabela niżej) + Enforce HTTPS
 
-## Deploy – drewitar.pl (Hostido)
+## Deploy – drewitar.pl (GitHub Pages)
 
-Domena **drewitar.pl** ma DNS w Hostido (`ns1–3.hostido.net.pl`) i rekord A na serwer hostingu – **DNS nie trzeba zmieniać**, strona trafia na ten hosting przez FTPS.
+Push na `main` → **CI** (testy) → **Deploy na drewitar.pl (GitHub Pages)**; dodatkowo codziennie o 5:00 UTC (świeże posty z FB). Plik `src/static/CNAME` = `drewitar.pl`.
 
-Push na `main` → **CI** (testy) → **Deploy na drewitar.pl**: build, wgranie `_site/` przez FTPS, sprawdzenie strony na żywo. Dodatkowo codziennie o 5:00 UTC (świeże posty z FB).
+### Rekordy DNS (strefa drewitar.pl w panelu Hostido)
 
-Jednorazowo:
-1. Panel Hostido → **Konta FTP** → nowe konto z katalogiem **`/domains/drewitar.pl/public_html`** (konto widzi tylko ten katalog – skrypt odmówi pracy na koncie z dostępem do całego hostingu).
-2. GitHub → *Settings → Secrets and variables → Actions* → sekrety:
-   - `HOSTIDO_FTP_HOST` – nazwa serwera z panelu Hostido (np. `host123456.hostido.net.pl`),
-   - `HOSTIDO_FTP_USERNAME`, `HOSTIDO_FTP_PASSWORD` – dane konta z punktu 1.
-3. *Actions → Deploy na drewitar.pl → Run workflow*.
+| Typ | Nazwa | Wartość | Uwagi |
+|---|---|---|---|
+| A | `drewitar.pl` (@) | `185.199.108.153` | zamiast obecnego `185.110.51.187` |
+| A | `drewitar.pl` (@) | `185.199.109.153` | |
+| A | `drewitar.pl` (@) | `185.199.110.153` | |
+| A | `drewitar.pl` (@) | `185.199.111.153` | |
+| AAAA | `drewitar.pl` (@) | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` | opcjonalnie (IPv6) |
+| CNAME | `www` | `patrykchoinski.github.io.` | usunąć obecny rekord A dla `www` |
 
-Bez sekretów workflow pomija wgrywanie (ostrzeżenie zamiast błędu). Poczta (`mail.drewitar.pl`, MX) nie jest ruszana.
+**Nie ruszać:** `mail.drewitar.pl` (A → 185.110.51.187), MX, TXT (SPF, DMARC), `*._domainkey` – poczta działa dalej na Hostido.
+
+Po propagacji (zwykle do 1 h, TTL 120 s): GitHub → *Settings → Pages* → zaznaczyć **Enforce HTTPS** (certyfikat wystawia się automatycznie).
+
+### Zapasowo: Hostido przez FTP
+
+Workflow **Deploy zapasowy na Hostido** (uruchamiany ręcznie) wgrywa `_site/` przez FTPS – gdy domena zostaje na serwerze Hostido. Wymaga sekretów `HOSTIDO_FTP_HOST`, `HOSTIDO_FTP_USERNAME`, `HOSTIDO_FTP_PASSWORD` (konto FTP ograniczone do `/domains/drewitar.pl/public_html`).

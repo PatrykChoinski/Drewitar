@@ -1,0 +1,56 @@
+name: Deploy zapasowy na Hostido (FTP, ręcznie)
+
+# Opcja zapasowa: gdy domena wskazuje na serwer Hostido zamiast na GitHub Pages.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-hostido
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: hostido
+      url: https://drewitar.pl
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Czy są sekrety FTP?
+        id: secrets
+        env:
+          HOST: ${{ secrets.HOSTIDO_FTP_HOST }}
+        run: |
+          if [ -n "$HOST" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"; else echo "::warning::Brak sekretów HOSTIDO_FTP_* – pomijam wgrywanie na drewitar.pl (zobacz README)."; fi
+      - run: npm ci
+      - name: Build
+        run: npm run build
+        env:
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          FB_PAGE_ID: ${{ vars.FB_PAGE_ID }}
+      - name: Wgraj na Hostido (FTPS)
+        if: steps.secrets.outputs.ready == 'true'
+        run: node scripts/deploy-hostido.mjs
+        env:
+          HOSTIDO_FTP_HOST: ${{ secrets.HOSTIDO_FTP_HOST }}
+          HOSTIDO_FTP_USERNAME: ${{ secrets.HOSTIDO_FTP_USERNAME }}
+          HOSTIDO_FTP_PASSWORD: ${{ secrets.HOSTIDO_FTP_PASSWORD }}
+      - name: Sprawdź stronę na żywo
+        if: steps.secrets.outputs.ready == 'true'
+        run: |
+          sleep 5
+          for path in / /oferta/ /kontakt/ /sitemap.xml; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://drewitar.pl$path")
+            echo "$code $path"
+            [ "$code" = "200" ] || exit 1
+          done
+          curl -s https://drewitar.pl/ | grep -q 'Drewno budowlane' || { echo 'Na serwerze nie ma nowej strony'; exit 1; }
